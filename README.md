@@ -92,6 +92,18 @@ Add to your Claude Desktop MCP config (`claude_desktop_config.json`):
 Restart Claude Desktop, then ask something like *"What tables are available,
 and which product category has the highest total revenue?"*
 
+## Web console (optional)
+
+A browser UI to try the six tools by hand — it imports the **same** `db.py`
+and `security.py` as the MCP server, so injection attempts are rejected by
+the real validation code, not a re-implementation. Standard library only.
+
+```bash
+python -m web.console      # then open http://localhost:8765
+```
+
+Needs the same Postgres / `.env` as the server.
+
 ## Sample schema
 
 `orders` → `order_items` → `products` → `categories`, plus `customers`.
@@ -116,6 +128,8 @@ sql_mcp_server/
   security.py  SQL/identifier validation (the core safety logic)
   db.py        psycopg2 access layer
   server.py    MCP tool definitions
+web/
+  console.py   Optional browser console over db.py + security.py
 scripts/
   init_schema.sql            Schema + read-only role setup
   generate_sample_data.py    Faker-based sample data
