@@ -254,7 +254,7 @@ class Handler(BaseHTTPRequestHandler):
 
 def main() -> None:
     server = ThreadingHTTPServer(("127.0.0.1", PORT), Handler)
-    print(f"SQL MCP console → http://127.0.0.1:{PORT}  (Ctrl+C to stop)")
+    print(f"SQL MCP console -> http://127.0.0.1:{PORT}  (Ctrl+C to stop)")
     try:
         server.serve_forever()
     except KeyboardInterrupt:
